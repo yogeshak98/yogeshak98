@@ -20,7 +20,12 @@ yogesh = {
         "databases": ["postgres", "redis", "mysql", "mongo"],
         "misc": ["spark", "gRPC", "docker", "bash"]
     },
-    "architecture": ["Micro-services", "Progressive web applications", "Single page applications", "ETL"],
+    "architecture": [
+        "Micro-services", 
+        "Progressive web applications", 
+        "Single page applications", 
+        "ETL"
+    ],
     "current_focus": ["Web Development", "Machine learning"],
     "curious_about": ["rust", "Machine Learning"],
     "interesting_quote": "Many a false step was made by standing still."
