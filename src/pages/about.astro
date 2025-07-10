@@ -1,73 +1,143 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="About Me"
-  description="Lorem ipsum dolor sit amet"
-  pubDate={new Date('August 08 2021')}
-  heroImage={AboutHeroImage}
+  title="About - Yogesh Kaddipudi"
+  description="Learn more about me and my journey as a developer"
 >
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo
-    integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis
-    egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In
-    hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat.
-    Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu
-    non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim.
-    Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed
-    vulputate mi. Dictumst quisque sagittis purus sit amet.
-  </p>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1
+          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
+        >
+          About Me
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+          A bit about my journey, interests, and what drives me.
+        </p>
+      </div>
 
-  <p>
-    Morbi tristique senectus et netus. Id semper risus in hendrerit gravida
-    rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus
-    sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris
-    rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus
-    dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-    massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius
-    morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras
-    ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est
-    ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa
-    ultricies mi.
-  </p>
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none">
+        <div
+          class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-8 mb-8"
+        >
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+            Hello! 👋
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            I'm Yogesh, a passionate developer who loves creating meaningful
+            digital experiences. My journey in technology started with curiosity
+            about how things work and has evolved into a career focused on
+            building innovative solutions.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            I specialize in full-stack development with a particular interest in
+            modern JavaScript frameworks, Python, and cloud technologies. I
+            believe in writing clean, maintainable code and creating user
+            experiences that make a difference.
+          </p>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            When I'm not coding, you can find me exploring new technologies,
+            contributing to open source projects, or sharing knowledge through
+            writing and mentoring.
+          </p>
+        </div>
 
-  <p>
-    Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque.
-    Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac
-    felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit
-    amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed
-    elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-    dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra.
-    Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum
-    consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus
-    ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-    facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed
-    risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor
-    vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus
-    non. Amet dictum sit amet justo donec enim.
-  </p>
+        <!-- Skills Section -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-8 mb-8"
+        >
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            What I Work With
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">
+                Frontend
+              </h3>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>JavaScript / TypeScript</li>
+                <li>React / Next.js</li>
+                <li>Astro</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white mb-3">
+                Backend
+              </h3>
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                <li>Node.js</li>
+                <li>Python</li>
+                <li>PostgreSQL / MongoDB</li>
+                <li>REST / GraphQL APIs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
-  <p>
-    Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac
-    ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem
-    viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu
-    ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac
-    tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-    pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim
-    sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.
-    Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-  </p>
-
-  <p>
-    Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-    imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-    cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum.
-    Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit
-    libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed
-    pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique
-    magna.
-  </p>
+        <!-- Contact Section -->
+        <div
+          class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 p-8"
+        >
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+            Let's Connect
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            I'm always interested in connecting with fellow developers,
+            discussing new projects, or just having a chat about technology and
+            life.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="mailto:hello@yogeshkaddipudi.com"
+              class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                ></path>
+                <path
+                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                ></path>
+              </svg>
+              Email
+            </a>
+            <a
+              href="https://github.com/yogeshak98"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/yogeshkaddipudi"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
