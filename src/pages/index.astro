@@ -1,124 +1,159 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import PostCard from '../components/PostCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { dateRange } from "@lib/utils";
+import { SITE, HOME, SOCIALS } from "@consts";
 
-const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const allwork = (await getCollection("work"))
+  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
+  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
+
+const work = await Promise.all(
+  allwork.map(async (item) => {
+    const { Content } = await item.render();
+    return { ...item, Content };
+  })
+);
+
 ---
 
-<Layout
-  title="Yogesh Kaddipudi - Developer Portfolio"
-  description="Welcome to my personal website and blog"
->
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Hero Section -->
-    <div class="text-center mb-16">
-      <h1
-        class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
-      >
-        Hi, I'm <span class="text-blue-600 dark:text-blue-400">Yogesh</span>
-      </h1>
-      <p
-        class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
-      >
-        A passionate developer who loves building things for the web. I write
-        about technology, development, and life.
-      </p>
-      <div class="mt-8 flex justify-center space-x-4">
-        <a
-          href="/about"
-          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-        >
-          About Me
-        </a>
-        <a
-          href="/blog"
-          class="px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
-        >
-          Read Blog
-        </a>
-      </div>
-    </div>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h4 class="animate font-semibold text-black dark:text-white">
+      Hi, I'm Nano <span class="text-xl">👋🏻</span> 
+    </h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4">
+          <p class="animate">
+            I am a minimal, seo friendly, accessible portfolio and blog for developers. 
+            I am an even more lightweight version of my popular theme
+            <Link href="https://github.com/markhorn-dev/astro-sphere" aria-label="Astro Sphere on Github" external>
+              Astro Sphere
+            </Link>.
+            I have a lighthouse scores of 100 across the board for performance, 
+            accesibility, best practices and SEO.
+          </p>
+          <p class="animate">
+            I come packed with full type safety, a sitemap, an rss feed, markdown 
+            and mdx support (use components in your markdown) through astro integrations.
+            I am styled with tailwind and come preconfigured with light, dark and 
+            system/os theme preferences out of the box.
+          </p>
+          <p class="animate">
+            Visit
+            <Link href="https://github.com/markhorn-dev/astro-nano" aria-label="Astro Nano on Github" external>
+              Astro Nano on Github
+            </Link>
+            to fork the repository, read the docs or one-click deploy on Vercel or Netlify. 
+          </p>
+        </article>
+      </section>
 
-    <!-- Recent Posts Section -->
-    {
-      posts.length > 0 && (
-        <div class="mb-16">
-          <div class="flex items-center justify-between mb-8">
-            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-              Recent Posts
-            </h2>
-            <a
-              href="/blog"
-              class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-            >
-              View all posts →
-            </a>
-          </div>
-
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
-              <PostCard
-                title={post.data.title}
-                description={post.data.description}
-                pubDate={post.data.pubDate}
-                updatedDate={post.data.updatedDate}
-                heroImage={post.data.heroImage?.src}
-                slug={post.id}
-              />
-            ))}
-          </div>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Latest posts
+          </h5>
+          <Link href="/blog">
+            See all posts
+          </Link>
         </div>
-      )
-    }
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    <!-- Skills/Technologies Section -->
-    <div class="mb-16">
-      <h2
-        class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center"
-      >
-        Technologies I Work With
-      </h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {
-          [
-            'JavaScript',
-            'TypeScript',
-            'React',
-            'Node.js',
-            'Python',
-            'Astro',
-            'Next.js',
-            'Tailwind CSS',
-          ].map((tech) => (
-            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center border border-gray-200 dark:border-gray-700">
-              <span class="text-gray-700 dark:text-gray-300 font-medium">
-                {tech}
-              </span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Work Experience
+          </h5>
+          <Link href="/work">
+            See all work
+          </Link>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          {work.map(entry => (
+            <li>
+              <div class="text-sm opacity-75">
+                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+              </div>
+              <div class="font-semibold text-black dark:text-white">
+                {entry.data.company}
+              </div>
+              <div class="text-sm opacity-75">
+                {entry.data.role}
+              </div>
+              <article>
+                <entry.Content />
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-    <!-- Contact Section -->
-    <div class="text-center">
-      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-        Let's Connect
-      </h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-6">
-        Feel free to reach out if you'd like to collaborate or just say hello.
-      </p>
-      <div class="flex justify-center space-x-4">
-        <a
-          href="mailto:hello@yogeshkaddipudi.com"
-          class="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
-        >
-          Get in Touch
-        </a>
-      </div>
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent projects
+          </h5>
+          <Link href="/projects">
+            See all projects
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {projects.map(project => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Let's Connect
+        </h5>
+        <article>
+          <p>
+            If you want to get in touch with me about something or just to say hi,
+            reach out on social media or send me an email.
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {SOCIALS.map(SOCIAL => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link href={SOCIAL.HREF} external aria-label={`${SITE.NAME} on ${SOCIAL.NAME}`}>
+                {SOCIAL.NAME}
+              </Link>
+              {"/"}
+            </li>
+          ))}
+          <li class="line-clamp-1">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
     </div>
-  </div>
-</Layout>
+  </Container>
+</PageLayout>

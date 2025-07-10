@@ -1,2 +1,0 @@
-npx lint-staged
-gitleaks protect --staged --verbose
