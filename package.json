@@ -39,7 +39,8 @@
   },
   "devDependencies": {
     "husky": "^9.1.4",
-    "lint-staged": "^15.2.7"
+    "lint-staged": "^15.2.7",
+    "wrangler": "^4.24.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,astro}": "eslint --fix"
