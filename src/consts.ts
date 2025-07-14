@@ -30,19 +30,23 @@ export const PROJECTS: Metadata = {
 
 export const SOCIALS: Socials = [
   { 
-    NAME: "github",
+    NAME: "GitHub (Personal)",
+    HREF: "https://github.com/yogeshak98"
+  },
+  { 
+    NAME: "GitHub (Work)",
     HREF: "https://github.com/kyogesha"
   },
   { 
-    NAME: "linkedin",
+    NAME: "LinkedIn",
     HREF: "https://linkedin.com/in/yogesha-k-851a9014a",
   },
   {
     NAME: "Stack Overflow",
-    HREF: "https://stackoverflow.com/users/10695932/yogesh",
+    HREF: "https://stackoverflow.com/users/12230718/yogesh",
   },
   {
-    NAME: "Leetcode",
+    NAME: "LeetCode",
     HREF: "https://leetcode.com/u/yogeshak/",
   }
 ];

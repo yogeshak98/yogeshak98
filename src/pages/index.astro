@@ -1,167 +1,37 @@
 ---
-import { getCollection } from "astro:content";
+// import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { dateRange } from "@lib/utils";
 import { SITE, HOME, SOCIALS } from "@consts";
 
-const blog = (await getCollection("blog"))
-  .filter(post => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+// const blog = (await getCollection("blog"))
+//   .filter(post => !post.data.draft)
+//   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+//   .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const projects = (await getCollection("projects"))
-  .filter(project => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
-const allwork = (await getCollection("work"))
-  .sort((a, b) => new Date(b.data.dateStart).valueOf() - new Date(a.data.dateStart).valueOf())
-  .slice(0,SITE.NUM_WORKS_ON_HOMEPAGE);
-
-const work = await Promise.all(
-  allwork.map(async (item) => {
-    const { Content } = await item.render();
-    return { ...item, Content };
-  })
-);
+// const projects = (await getCollection("projects"))
+//   .filter(project => !project.data.draft)
+//   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+//   .slice(0,SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 ---
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Yogesh <span class="text-xl">👋🏻</span> 
+      Hi, I'm Yogesh <span class="text-xl">👋🏻</span>
     </h4>
     <div class="space-y-16">
       <section>
         <article class="space-y-4">
           <p class="animate">
-            Led engineering teams through full project lifecycles, from initial concept to successful deployment. Managed crossfunctional collaborations, ensuring alignment between engineering, product, and business stakeholders. Consistently delivered solutions to complex technical challenges,resulting in accelerated feature delivery by 20%.
+            I'm a software engineer who loves building things the right way, driven by a product-focused mindset. As a Tech Lead at 314e Corp, I contribute to the Veritable and Practifly products as both a lead and an individual contributor.
+          </p>
+          <p class="animate">
+            At 314e, I have built, grown, and led teams across Search, DevOps, and Data Engineering. With over six years of experience, I specialize in scaling backend services and taking products and teams from 0 to 1 and beyond.
           </p>
         </article>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Latest posts
-          </h5>
-          <Link href="/blog">
-            See all posts
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {blog.map(post => (
-            <li>
-              <ArrowCard entry={post} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
-          </h5>
-          <Link href="/work">
-            See all work
-          </Link>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          {work.map(entry => (
-            <li>
-              <div class="text-sm opacity-75">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
-              </div>
-              <div class="font-semibold text-black dark:text-white">
-                {entry.data.company}
-              </div>
-              <div class="text-sm opacity-75">
-                {entry.data.role}
-              </div>
-              <article>
-                <entry.Content />
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Skills
-          </h5>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          <li>
-            <div class="font-semibold text-black dark:text-white">
-              Programming Languages
-            </div>
-            <div class="text-sm opacity-75">
-              Python, Java, TypeScript, Rust
-            </div>
-          </li>
-          <li>
-            <div class="font-semibold text-black dark:text-white">
-              Frameworks
-            </div>
-            <div class="text-sm opacity-75">
-              FastAPI, Quarkus, Celery, Temporal, Spark
-            </div>
-          </li>
-          <li>
-            <div class="font-semibold text-black dark:text-white">
-              Others
-            </div>
-            <div class="text-sm opacity-75">
-              AWS, Cloudflare, Kubernetes, GIT, Postgres, Redis, RabbitMQ, Docker, Grafana, Elastic Search
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Education
-          </h5>
-        </div>
-        <ul class="flex flex-col space-y-4">
-          <li>
-            <div class="font-semibold text-black dark:text-white">
-              University Visvesvaraya College of Engineering
-            </div>
-            <div class="text-sm opacity-75">
-              Bachelor of Engineering: Electronics & Communication Engineering
-            </div>
-            <div class="text-sm opacity-75">
-              08/2015 – 06/2019 | Bangalore
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
-          </h5>
-          <Link href="/projects">
-            See all projects
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} />
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section class="animate space-y-4">
@@ -184,8 +54,13 @@ const work = await Promise.all(
             </li>
           ))}
           <li class="line-clamp-1">
-            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.NAME}`}>
-              {SITE.EMAIL}
+            <Link 
+              href="javascript:void(0);" 
+              id="email-link" 
+              aria-label={`Email ${SITE.NAME}`}
+              dataEmail={SITE.EMAIL.split('').reverse().join('')}
+            >
+              Mail
             </Link>
           </li>
         </ul>
@@ -193,3 +68,16 @@ const work = await Promise.all(
     </div>
   </Container>
 </PageLayout>
+
+<script>
+  const emailLink = document.getElementById('email-link');
+  if (emailLink) {
+    emailLink.addEventListener('click', () => {
+      const reversedEmail = emailLink.getAttribute('data-email');
+      if (reversedEmail) {
+        const email = reversedEmail.split('').reverse().join('');
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  }
+</script>

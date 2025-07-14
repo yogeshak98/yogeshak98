@@ -4,5 +4,4 @@ role: "Software Engineer"
 dateStart: "2019-07-01"
 dateEnd: "2020-10-01"
 ---
-- Implemented APIs to ingest media and process them using FFmpeg to create streamable media.
-- Transcribe media, Google Speech to Text, and index documents using Elastic Search,resulting in a better search experience. 
+In my first role at the company, I implemented APIs to ingest and process media with FFmpeg for streaming. I also built a better search experience by transcribing media with Google Speech to Text and indexing the content with Elasticsearch. 

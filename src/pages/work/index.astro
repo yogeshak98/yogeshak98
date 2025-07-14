@@ -22,6 +22,41 @@ const work = await Promise.all(
       <div class="animate font-semibold text-black dark:text-white">
         Work
       </div>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Skills
+          </h5>
+        </div>
+        <ul class="flex flex-col space-y-4">
+          <li>
+            <div class="font-semibold text-black dark:text-white">
+              Programming Languages
+            </div>
+            <div class="text-sm opacity-75">
+              Python, Java, TypeScript, Rust
+            </div>
+          </li>
+          <li>
+            <div class="font-semibold text-black dark:text-white">
+              Frameworks
+            </div>
+            <div class="text-sm opacity-75">
+              FastAPI, Quarkus, Celery, Temporal, Spark
+            </div>
+          </li>
+          <li>
+            <div class="font-semibold text-black dark:text-white">
+              Others
+            </div>
+            <div class="text-sm opacity-75">
+              AWS, Cloudflare, Kubernetes, GIT, Postgres, Redis, RabbitMQ, Docker, Grafana, Elastic Search
+            </div>
+          </li>
+        </ul>
+      </section>
+
       <ul class="flex flex-col space-y-4">
         { 
           work.map(entry => (
