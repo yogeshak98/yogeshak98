@@ -4,4 +4,6 @@ role: "Data Engineer"
 dateStart: "2020-11-01"
 dateEnd: "2022-09-01"
 ---
-As a Data Engineer, I focused on optimizing our big data workflows. I improved existing Spark jobs by fine-tuning queries and cluster configurations, which reduced Azure DBU costs by 20%. I also implemented custom Spark UDFs in Java for critical tasks like data decryption, DICOM image parsing, and converting data from FHIR to HL7 for ingestion into cloud EHRs, while also mentoring junior team members on best practices. 
+When I moved into a Data Engineering role, my main goal was to make our big data workflows faster and more cost-effective. By digging into our Spark jobs to fine-tune SQL queries and optimize our cluster configurations, I managed to cut our Azure data costs by about 20%. 
+
+Beyond that, I wrote custom Java functions for Spark to handle tricky operations at scale—things like data decryption, parsing DICOM medical images, and converting healthcare data from FHIR back to HL7 for cloud EHR ingestion. It was also a great opportunity to mentor junior engineers and share those best practices across the team.

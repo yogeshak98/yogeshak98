@@ -1,13 +1,31 @@
 ---
+import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
+import ArrowCard from "@components/ArrowCard.astro";
+import { BLOG } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter(post => import.meta.env.PROD ? !post.data.draft : true)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<PageLayout title="Blog" description={`All articles and posts on ${SITE.NAME}`}>
+<PageLayout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
   <Container>
-    <div class="text-center p-8">
-      <h1 class="text-4xl font-bold">Work In Progress</h1>
-      <p class="text-lg mt-4">This page is currently under construction. Please check back later!</p>
-    </div>
+    <aside class="space-y-16">
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Blog
+          </h5>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </aside>
   </Container>
 </PageLayout>

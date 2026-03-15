@@ -1,14 +1,15 @@
 ---
-// import { getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import Link from "@components/Link.astro";
+import ArrowCard from "@components/ArrowCard.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 
-// const blog = (await getCollection("blog"))
-//   .filter(post => !post.data.draft)
-//   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-//   .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0,SITE.NUM_POSTS_ON_HOMEPAGE);
 
 // const projects = (await getCollection("projects"))
 //   .filter(project => !project.data.draft)
@@ -26,12 +27,30 @@ import { SITE, HOME, SOCIALS } from "@consts";
       <section>
         <article class="space-y-4">
           <p class="animate">
-            I'm a software engineer who loves building things the right way, driven by a product-focused mindset. As a Tech Lead at 314e Corp, I contribute to the Veritable and Practifly products as both a lead and an individual contributor.
+            I'm a Pragmatic engineer who thrives in solving complex problems and owns systems end to end: planning, implementation, debugging, and operating in production. I have no qualms about getting my hands dirty with any programming language—proficient use of AI tools like Cursor, Claude Code has reduced the barrier further. In my experience with systems that are opaque, slow, or unreliable, small pragmatic changes can go a long way.
           </p>
           <p class="animate">
-            At 314e, I have built, grown, and led teams across Search, DevOps, and Data Engineering. With over six years of experience, I specialize in scaling backend services and taking products and teams from 0 to 1 and beyond.
+            I’m very comfortable with web servers, async background workers, building complex long-running workflows, talking to databases and queues, and building out scalable and reliable systems. I also have a strong focus on AI systems, working extensively with Semantic Search, Vector Databases, and LangGraph.
           </p>
         </article>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Recent posts
+          </h5>
+          <Link href="/blog">
+            See all posts
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section class="animate space-y-4">
